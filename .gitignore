@@ -4,8 +4,8 @@
 
 # IntelliJ project files
 .idea/
-*.iml/
+*.iml
 out
 gen
-websocket.iml
+
 
