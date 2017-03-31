@@ -17,6 +17,12 @@ import java.util.List;
  * Date: 2017/3/31.
  */
 public class JsonUtils {
+    /**
+     * json数据转换为对象
+     * @param jsonStr
+     * @param cla
+     * @return
+     */
     public static Object json2Obj(String jsonStr, Class<?> cla) {
         Object obj = null;
         try {

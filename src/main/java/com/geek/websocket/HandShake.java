@@ -36,6 +36,6 @@ public class HandShake implements HandshakeInterceptor {
         return true;
     }
     public void afterHandshake(ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse, WebSocketHandler webSocketHandler, Exception e) {
-
+        System.out.println("完成握手");
     }
 }
