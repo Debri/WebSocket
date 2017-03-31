@@ -23,7 +23,7 @@ import java.util.Map;
  * Date: 2017/3/31.
  */
 @Controller
-@RequestMapping(value = "/msg")
+@RequestMapping("/msg/")
 public class MsgController {
     @Resource
     MyWebSocketHandler handler;
@@ -46,6 +46,7 @@ public class MsgController {
     // 用户登录
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public ModelAndView doLogin(User user, HttpServletRequest request) {
+        System.out.println("----------");
         request.getSession().setAttribute("uid", user.getId());
         request.getSession().setAttribute("name", users.get(user.getId()).getName());
         return new ModelAndView("redirect:chat");
