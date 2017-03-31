@@ -12,7 +12,7 @@
 %>
 <html>
 <head>
-    <title>websocket</title>
+    <title>webSocket</title>
 </head>
 <body>
 <form action="msg/login" method="post">
