@@ -22,7 +22,7 @@ import java.util.Map;
  * Created by Liuqi
  * Date: 2017/3/31.
  */
-@Controller
+@Controller("msgController")
 @RequestMapping("/msg/")
 public class MsgController {
     @Resource

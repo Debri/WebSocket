@@ -5,7 +5,7 @@
   Time: 15:41
   To change this template use File | Settings | File Templates.
 --%>
-%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -180,7 +180,8 @@
                 data["to"] = to;
                 data["text"] = v;
                 websocket.send(JSON.stringify(data));
-                $("#content").append("<div class='tmsg'><label class='name'>我&nbsp;" + new Date().Format("yyyy-MM-dd hh:mm:ss") + "</label><div class='tmsg_text'>" + data.text + "</div></div>");
+                $("#content").append("<div class='tmsg'>" +
+                        "<label class='name'>我&nbsp;" + new Date().Format("yyyy-MM-dd hh:mm:ss") + "</label><div class='tmsg_text'>" + data.text + "</div></div>");
                 scrollToBottom();
                 $("#msg").val("");
             }

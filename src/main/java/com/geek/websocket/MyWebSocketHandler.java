@@ -32,6 +32,7 @@ public class MyWebSocketHandler implements WebSocketHandler {
      * @throws Exception
      */
     public void afterConnectionEstablished(WebSocketSession webSocketSession) throws Exception {
+        System.out.println("建立连接以后");
         Long uid = (Long) webSocketSession.getAttributes().get("uid");
         if (userSocketSessionMap.get(uid) == null) {
             userSocketSessionMap.put(uid, webSocketSession);
@@ -46,6 +47,7 @@ public class MyWebSocketHandler implements WebSocketHandler {
      * @throws Exception
      */
     public void handleMessage(WebSocketSession webSocketSession, WebSocketMessage<?> webSocketMessage) throws Exception {
+        System.out.println("消息处理");
         if (webSocketMessage.getPayloadLength() == 0) {
             return;
         }
@@ -61,6 +63,7 @@ public class MyWebSocketHandler implements WebSocketHandler {
      * @throws Exception
      */
     public void handleTransportError(WebSocketSession webSocketSession, Throwable throwable) throws Exception {
+        System.out.println("消息传输错误处理");
         if (webSocketSession.isOpen()) {
             webSocketSession.close();
         }
@@ -106,6 +109,7 @@ public class MyWebSocketHandler implements WebSocketHandler {
      * @throws IOException
      */
     public void broadcast(final TextMessage message) throws IOException {
+        System.out.println("给所有的用户发送消息");
         Iterator<Entry<Long, WebSocketSession>> it = userSocketSessionMap.entrySet().iterator();
         // 多线程群发
         while (it.hasNext()) {
@@ -133,6 +137,7 @@ public class MyWebSocketHandler implements WebSocketHandler {
      * @throws IOException
      */
     public void sendMessageToUser(Long uid, TextMessage message) throws IOException {
+        System.out.println("给某个用户发送消息");
         WebSocketSession session = userSocketSessionMap.get(uid);
         if (session != null && session.isOpen()) {
             session.sendMessage(message);
