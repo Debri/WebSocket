@@ -32,11 +32,12 @@ public class MyWebSocketHandler implements WebSocketHandler {
      * @throws Exception
      */
     public void afterConnectionEstablished(WebSocketSession webSocketSession) throws Exception {
-        System.out.println("建立连接以后");
+
         Long uid = (Long) webSocketSession.getAttributes().get("uid");
         if (userSocketSessionMap.get(uid) == null) {
             userSocketSessionMap.put(uid, webSocketSession);
         }
+        System.out.println("建立连接以后");
     }
 
     /**
@@ -47,13 +48,15 @@ public class MyWebSocketHandler implements WebSocketHandler {
      * @throws Exception
      */
     public void handleMessage(WebSocketSession webSocketSession, WebSocketMessage<?> webSocketMessage) throws Exception {
-        System.out.println("消息处理");
+
         if (webSocketMessage.getPayloadLength() == 0) {
             return;
         }
         Message msg = (Message) JsonUtils.json2Obj(webSocketMessage.getPayload().toString(), Message.class);
         msg.setDate(new Date());
         sendMessageToUser(msg.getTo(), new TextMessage(msg.getText()));
+        System.out.println("消息处理");
+        return;
     }
 
     /**
