@@ -2,7 +2,7 @@ package com.geek.websocket;
 
 import com.geek.bean.Message;
 import com.geek.util.JsonUtils;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.socket.*;
 
 import java.io.IOException;
@@ -17,7 +17,7 @@ import java.util.Map.Entry;
  * Date: 2017/3/31.
  * Socket处理器
  */
-@Component
+@Service
 public class MyWebSocketHandler implements WebSocketHandler {
     public static final Map<Long, WebSocketSession> userSocketSessionMap;
 
